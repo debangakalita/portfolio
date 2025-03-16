@@ -13,6 +13,37 @@ document.addEventListener('click', (e) => {
     }
 });
 
+// Contact Modal functionality
+const modal = document.getElementById('contactModal');
+const contactBtn = document.querySelector('.contact-btn');
+const closeBtn = document.querySelector('.close-button');
+
+contactBtn.addEventListener('click', () => {
+    modal.classList.add('show');
+    document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
+});
+
+closeBtn.addEventListener('click', () => {
+    modal.classList.remove('show');
+    document.body.style.overflow = ''; // Restore scrolling
+});
+
+// Close modal when clicking outside
+window.addEventListener('click', (e) => {
+    if (e.target === modal) {
+        modal.classList.remove('show');
+        document.body.style.overflow = '';
+    }
+});
+
+// Close modal with Escape key
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('show')) {
+        modal.classList.remove('show');
+        document.body.style.overflow = '';
+    }
+});
+
 // Smooth scroll for navigation links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
